@@ -1,0 +1,56 @@
+#title in header
+title: "Hi Folks."
+
+#main info
+owner: ""
+email: 1786128750@qq.com
+info: "This is Jensonhui's blog 😁, A web developer from China 🇨🇳"
+#description
+desc: ""
+
+#menu
+menu:
+  About: /About
+  Links: /Links
+  Mixed: /Mixed
+
+#index/main page max show posts (in number)
+max_post: 5
+
+# Colors use hex color without #
+# Theme color
+tcolor: 0FA0CE
+
+# Define path to user css
+#(could be also located outside of theme)
+# Relative to source/ directory
+# css/user.css
+usercss: 
+
+# social profile at the footer/bottom
+footer: true
+placename: Earth
+placelink: https://en.wikipedia.org
+github: https://github.com/Jensonhui
+linkedin: https://linkedin.com
+twitter: https://twitter.com/
+instagram: https://instagram.com/
+stackoverflow: https://stackoverflow.com/
+
+# Misc
+nanobar: /js/nanobar.min.js
+switch_light: ☀️
+switch_dark: 🌑
+
+# favicon
+favicon: /images/favicon.png
+# thumbnail
+thumbnail: /images/thumbnail.jpg
+
+article:
+  thumbnail: true
+
+# DISQUS comments (sign up to Disqus to get disqus_shortname)
+disqus_enabled: false
+disqus_shortname: https-Jensonhui-github-io
+
