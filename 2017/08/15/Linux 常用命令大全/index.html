@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Minima -->
+  <!-- Hexo theme created by @adisaktijrs -->
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+
+  
+  <title>Linux常用命令大全</title>
+  
+  <link rel="canonical" href="https://www.jensonhui.top/2017/08/15/Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/">
+  
+  <meta name="description" content="系统信息arch 显示机器的处理器架构(1)  uname -m 显示机器的处理器架构(2)  uname -r 显示正在使用的内核版本  dmidecode -q 显示硬件系统部件 - (SMBIOS / DMI)  hdparm -i /dev/hda 罗列一个磁盘的架构特性  hdparm -">
+  
+  
+  <meta name="author" content="Jenson hui">
+  
+  <meta property="og:image" content="https://www.jensonhui.topundefined">
+  
+  <meta property="og:site_name" content="Hi Folks." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Linux常用命令大全" />
+  
+  <meta property="og:description" content="系统信息arch 显示机器的处理器架构(1)  uname -m 显示机器的处理器架构(2)  uname -r 显示正在使用的内核版本  dmidecode -q 显示硬件系统部件 - (SMBIOS / DMI)  hdparm -i /dev/hda 罗列一个磁盘的架构特性  hdparm -">
+  
+  <meta property="og:url" content="https://www.jensonhui.top/2017/08/15/Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Linux常用命令大全">
+  
+  <meta name="twitter:description" content="系统信息arch 显示机器的处理器架构(1)  uname -m 显示机器的处理器架构(2)  uname -r 显示正在使用的内核版本  dmidecode -q 显示硬件系统部件 - (SMBIOS / DMI)  hdparm -i /dev/hda 罗列一个磁盘的架构特性  hdparm -">
+  
+  
+  <meta name="twitter:image" content="https://www.jensonhui.topundefined">
+  
+  <meta name="twitter:url" content="https://www.jensonhui.top/2017/08/15/Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%A4%A7%E5%85%A8/" />
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload fonts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preload" href="../fonts/dm-serif-display-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/inter-v2-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+<link rel="stylesheet" href="/css/normalize.css">
+
+  
+<link rel="stylesheet" href="/css/skeleton.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+<link rel="stylesheet" href="/css/prism-dark.css">
+
+  
+<link rel="stylesheet" href="/css/prism-line-numbers.css">
+
+  <!-- User css -->
+  
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <!-- Custom Theme Color Style
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <style>
+  a:not(.icon) {
+    text-decoration-color: #0FA0CE;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 50%,
+      #0FA0CE 50%
+    );
+  }
+  blockquote {
+    border-left: 4px solid #0FA0CE;
+  }
+  .nanobar .bar {
+    background: #0FA0CE;
+  }
+  .button.button-primary:hover,
+  button.button-primary:hover,
+  input[type="submit"].button-primary:hover,
+  input[type="reset"].button-primary:hover,
+  input[type="button"].button-primary:hover,
+  .button.button-primary:focus,
+  button.button-primary:focus,
+  input[type="submit"].button-primary:focus,
+  input[type="reset"].button-primary:focus,
+  input[type="button"].button-primary:focus {
+    background-color: #0FA0CE;
+    border-color: #0FA0CE;
+  }
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="text"]:focus,
+  input[type="tel"]:focus,
+  input[type="url"]:focus,
+  input[type="password"]:focus,
+  textarea:focus,
+  select:focus {
+    border: 1px solid #0FA0CE;
+  }
+</style>
+
+  <!-- Google Analytics (With Privacy Settings On)
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div>
+
+        <div class="row">
+  <div class="two columns" style="max-width: 50px">
+    <h1 class="mt-2 mode">
+      <div onclick=setDarkMode(true) id="darkBtn">🌑</div>
+      <div onclick=setDarkMode(false) id="lightBtn" class=hidden>☀️</div>
+      <script >
+        if (localStorage.getItem('preferredTheme') == 'dark') {
+          setDarkMode(true)
+        }
+        function setDarkMode(isDark) {
+          var darkBtn = document.getElementById('darkBtn')
+          var lightBtn = document.getElementById('lightBtn')
+          if (isDark) {
+            lightBtn.style.display = "block"
+            darkBtn.style.display = "none"
+            localStorage.setItem('preferredTheme', 'dark');
+          } else {
+            lightBtn.style.display = "none"
+            darkBtn.style.display = "block"
+            localStorage.removeItem('preferredTheme');
+          }
+          document.body.classList.toggle("darkmode");
+        }
+      </script>
+    </h1>
+  </div>
+
+  <div class="six columns ml-1">
+    <h1 class="mt-2">
+      Hi Folks.
+    </h1>
+  </div>
+
+  <div class="twelve columns">
+    <div class="row">
+      <div class="nine columns left">
+        <a href="/">Home</a>
+        
+          
+          <a href="/About" class="ml">About</a>
+          
+        
+          
+          <a href="/Links" class="ml">Links</a>
+          
+        
+          
+          <a href="/Mixed" class="ml">Mixed</a>
+          
+        
+        
+          
+            <a href="mailto:1786128750@qq.com" target="_blank" class="ml">Email</a>
+          
+        
+      </div>
+    </div>
+    <hr style="margin-bottom: 2.6rem">
+  </div>
+</div>
+
+        <div class="trans">
+            <h2>[ Linux常用命令大全 ]</h2>
+
+  <h3 id="系统信息"><a href="#系统信息" class="headerlink" title="系统信息"></a>系统信息</h3><pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx">arch 显示机器的处理器架构<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> 
+uname <span class="token operator">-</span>m 显示机器的处理器架构<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> 
+uname <span class="token operator">-</span>r 显示正在使用的内核版本 
+dmidecode <span class="token operator">-</span>q 显示硬件系统部件 <span class="token operator">-</span> <span class="token punctuation">(</span>SMBIOS <span class="token operator">/</span> DMI<span class="token punctuation">)</span> 
+hdparm <span class="token operator">-</span>i <span class="token operator">/</span>dev<span class="token operator">/</span>hda 罗列一个磁盘的架构特性 
+hdparm <span class="token operator">-</span>tT <span class="token operator">/</span>dev<span class="token operator">/</span>sda 在磁盘上执行测试性读取操作 
+cat <span class="token operator">/</span>proc<span class="token operator">/</span>cpuinfo 显示CPU info的信息 
+cat <span class="token operator">/</span>proc<span class="token operator">/</span>interrupts 显示中断 
+cat <span class="token operator">/</span>proc<span class="token operator">/</span>meminfo 校验内存使用 
+cat <span class="token operator">/</span>proc<span class="token operator">/</span>swaps 显示哪些swap被使用 
+cat <span class="token operator">/</span>proc<span class="token operator">/</span>version 显示内核的版本 
+cat <span class="token operator">/</span>proc<span class="token operator">/</span>net<span class="token operator">/</span>dev 显示网络适配器及统计 
+cat <span class="token operator">/</span>proc<span class="token operator">/</span>mounts 显示已加载的文件系统 
+lspci <span class="token operator">-</span>tv 罗列 PCI 设备 
+lsusb <span class="token operator">-</span>tv 显示 USB 设备 
+date 显示系统日期 
+cal <span class="token number">2007</span> 显示<span class="token number">2007</span>年的日历表 
+date <span class="token number">041217002007.00</span> 设置日期和时间 <span class="token operator">-</span> 月日时分年<span class="token punctuation">.</span>秒 
+clock <span class="token operator">-</span>w 将时间修改保存到 BIOS <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<br/>
+
+<h3 id="关机-系统的关机、重启以及登出"><a href="#关机-系统的关机、重启以及登出" class="headerlink" title="关机 (系统的关机、重启以及登出 )"></a>关机 (系统的关机、重启以及登出 )</h3><pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx">shutdown <span class="token operator">-</span>h now 关闭系统<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> 
+init <span class="token number">0</span> 关闭系统<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> 
+telinit <span class="token number">0</span> 关闭系统<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> 
+shutdown <span class="token operator">-</span>h hours<span class="token punctuation">:</span>minutes <span class="token operator">&amp;</span> 按预定时间关闭系统 
+shutdown <span class="token operator">-</span>c 取消按预定时间关闭系统 
+shutdown <span class="token operator">-</span>r now 重启<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> 
+reboot 重启<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> 
+logout 注销<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<br/>
+
+<h3 id="文件和目录"><a href="#文件和目录" class="headerlink" title="文件和目录"></a>文件和目录</h3><pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx">cd <span class="token operator">/</span>home 进入 <span class="token string">'/ home'</span> 目录' 
+cd <span class="token punctuation">.</span><span class="token punctuation">.</span> 返回上一级目录 
+cd <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token operator">/</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 返回上两级目录 
+cd 进入个人的主目录 
+cd <span class="token operator">~</span>user1 进入个人的主目录 
+cd <span class="token operator">-</span> 返回上次所在的目录 
+pwd 显示工作路径 
+ls 查看目录中的文件 
+ls <span class="token operator">-</span>F 查看目录中的文件 
+ls <span class="token operator">-</span>l 显示文件和目录的详细资料 
+ls <span class="token operator">-</span>a 显示隐藏文件 
+ls <span class="token operator">*</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span><span class="token operator">*</span> 显示包含数字的文件名和目录名 
+tree 显示文件和目录由根目录开始的树形结构<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> 
+lstree 显示文件和目录由根目录开始的树形结构<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> 
+mkdir dir1 创建一个叫做 <span class="token string">'dir1'</span> 的目录' 
+mkdir dir1 dir2 同时创建两个目录 
+mkdir <span class="token operator">-</span>p <span class="token operator">/</span>tmp<span class="token operator">/</span>dir1<span class="token operator">/</span>dir2 创建一个目录树 
+rm <span class="token operator">-</span>f file1 删除一个叫做 <span class="token string">'file1'</span> 的文件' 
+rmdir dir1 删除一个叫做 <span class="token string">'dir1'</span> 的目录' 
+rm <span class="token operator">-</span>rf dir1 删除一个叫做 <span class="token string">'dir1'</span> 的目录并同时删除其内容 
+rm <span class="token operator">-</span>rf dir1 dir2 同时删除两个目录及它们的内容 
+mv dir1 new_dir 重命名<span class="token operator">/</span>移动 一个目录 
+cp file1 file2 复制一个文件 
+cp dir<span class="token operator">/</span><span class="token operator">*</span> <span class="token punctuation">.</span> 复制一个目录下的所有文件到当前工作目录 
+cp <span class="token operator">-</span>a <span class="token operator">/</span>tmp<span class="token operator">/</span>dir1 <span class="token punctuation">.</span> 复制一个目录到当前工作目录 
+cp <span class="token operator">-</span>a dir1 dir2 复制一个目录 
+ln <span class="token operator">-</span>s file1 lnk1 创建一个指向文件或目录的软链接 
+ln file1 lnk1 创建一个指向文件或目录的物理链接 
+touch <span class="token operator">-</span>t <span class="token number">0712250000</span> file1 修改一个文件或目录的时间戳 <span class="token operator">-</span> <span class="token punctuation">(</span>YYMMDDhhmm<span class="token punctuation">)</span> 
+file file1 outputs the mime type of the file as text 
+iconv <span class="token operator">-</span>l 列出已知的编码 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<br/>
+
+<h3 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h3><pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx">find <span class="token operator">/</span> <span class="token operator">-</span>name file1 从 <span class="token string">'/'</span> 开始进入根文件系统搜索文件和目录 
+find <span class="token operator">/</span> <span class="token operator">-</span><span class="token keyword">user</span> user1 搜索属于用户 <span class="token string">'user1'</span> 的文件和目录 
+find <span class="token operator">/</span>home<span class="token operator">/</span>user1 <span class="token operator">-</span>name \<span class="token operator">*</span><span class="token punctuation">.</span>bin 在目录 <span class="token string">'/ home/user1'</span> 中搜索带有<span class="token string">'.bin'</span> 结尾的文件 
+find <span class="token operator">/</span>usr<span class="token operator">/</span>bin <span class="token operator">-</span>type f <span class="token operator">-</span>atime <span class="token operator">+</span><span class="token number">100</span> 搜索在过去<span class="token number">100</span>天内未被使用过的执行文件 
+find <span class="token operator">/</span>usr<span class="token operator">/</span>bin <span class="token operator">-</span>type f <span class="token operator">-</span>mtime <span class="token operator">-</span><span class="token number">10</span> 搜索在<span class="token number">10</span>天内被创建或者修改过的文件 
+find <span class="token operator">/</span> <span class="token operator">-</span>name \<span class="token operator">*</span><span class="token punctuation">.</span>rpm <span class="token operator">-</span>exec chmod <span class="token number">755</span> <span class="token string">'&#123;&#125;'</span> \<span class="token punctuation">;</span> 搜索以 <span class="token string">'.rpm'</span> 结尾的文件并定义其权限 
+find <span class="token operator">/</span> <span class="token operator">-</span>xdev <span class="token operator">-</span>name \<span class="token operator">*</span><span class="token punctuation">.</span>rpm 搜索以 <span class="token string">'.rpm'</span> 结尾的文件，忽略光驱、捷盘等可移动设备 
+locate \<span class="token operator">*</span><span class="token punctuation">.</span>ps 寻找以 <span class="token string">'.ps'</span> 结尾的文件 <span class="token operator">-</span> 先运行 <span class="token string">'updatedb'</span> 命令 
+whereis halt 显示一个二进制文件、源码或man的位置 
+which halt 显示一个二进制文件或可执行文件的完整路径<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<br/>
+
+<h3 id="挂载一个文件系统"><a href="#挂载一个文件系统" class="headerlink" title="挂载一个文件系统"></a>挂载一个文件系统</h3><pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx">mount <span class="token operator">/</span>dev<span class="token operator">/</span>hda2 <span class="token operator">/</span>mnt<span class="token operator">/</span>hda2 挂载一个叫做hda2的盘 <span class="token operator">-</span> 确定目录 <span class="token string">'/ mnt/hda2'</span> 已经存在 
+umount <span class="token operator">/</span>dev<span class="token operator">/</span>hda2 卸载一个叫做hda2的盘 <span class="token operator">-</span> 先从挂载点 <span class="token string">'/ mnt/hda2'</span> 退出 
+fuser <span class="token operator">-</span>km <span class="token operator">/</span>mnt<span class="token operator">/</span>hda2 当设备繁忙时强制卸载 
+umount <span class="token operator">-</span>n <span class="token operator">/</span>mnt<span class="token operator">/</span>hda2 运行卸载操作而不写入 <span class="token operator">/</span>etc<span class="token operator">/</span>mtab 文件<span class="token operator">-</span> 当文件为只读或当磁盘写满时非常有用 
+mount <span class="token operator">/</span>dev<span class="token operator">/</span>fd0 <span class="token operator">/</span>mnt<span class="token operator">/</span>floppy 挂载一个软盘 
+mount <span class="token operator">/</span>dev<span class="token operator">/</span>cdrom <span class="token operator">/</span>mnt<span class="token operator">/</span>cdrom 挂载一个cdrom或dvdrom 
+mount <span class="token operator">/</span>dev<span class="token operator">/</span>hdc <span class="token operator">/</span>mnt<span class="token operator">/</span>cdrecorder 挂载一个cdrw或dvdrom 
+mount <span class="token operator">/</span>dev<span class="token operator">/</span>hdb <span class="token operator">/</span>mnt<span class="token operator">/</span>cdrecorder 挂载一个cdrw或dvdrom 
+mount <span class="token operator">-</span>o loop file<span class="token punctuation">.</span>iso <span class="token operator">/</span>mnt<span class="token operator">/</span>cdrom 挂载一个文件或ISO镜像文件 
+mount <span class="token operator">-</span>t vfat <span class="token operator">/</span>dev<span class="token operator">/</span>hda5 <span class="token operator">/</span>mnt<span class="token operator">/</span>hda5 挂载一个Windows FAT32文件系统 
+mount <span class="token operator">/</span>dev<span class="token operator">/</span>sda1 <span class="token operator">/</span>mnt<span class="token operator">/</span>usbdisk 挂载一个usb 捷盘或闪存设备 
+mount <span class="token operator">-</span>t smbfs <span class="token operator">-</span>o username<span class="token operator">=</span><span class="token keyword">user</span><span class="token punctuation">,</span>password<span class="token operator">=</span>pass <span class="token operator">/</span><span class="token operator">/</span>WinClient<span class="token operator">/</span>share <span class="token operator">/</span>mnt<span class="token operator">/</span>share 挂载一个windows网络共享 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<br/>
+
+<h3 id="磁盘空间"><a href="#磁盘空间" class="headerlink" title="磁盘空间"></a>磁盘空间</h3><pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx">df <span class="token operator">-</span>h 显示已经挂载的分区列表 
+ls <span class="token operator">-</span>lSr <span class="token operator">|</span>more 以尺寸大小排列文件和目录 
+du <span class="token operator">-</span>sh dir1 估算目录 <span class="token string">'dir1'</span> 已经使用的磁盘空间' 
+du <span class="token operator">-</span>sk <span class="token operator">*</span> <span class="token operator">|</span> sort <span class="token operator">-</span>rn 以容量大小为依据依次显示文件和目录的大小 
+rpm <span class="token operator">-</span>q <span class="token operator">-</span>a <span class="token operator">--</span>qf <span class="token string">'%10&#123;SIZE&#125;t%&#123;NAME&#125;n'</span> <span class="token operator">|</span> sort <span class="token operator">-</span>k1<span class="token punctuation">,</span><span class="token number">1</span>n 以大小为依据依次显示已安装的rpm包所使用的空间 <span class="token punctuation">(</span>fedora<span class="token punctuation">,</span> redhat类系统<span class="token punctuation">)</span> 
+dpkg<span class="token operator">-</span>query <span class="token operator">-</span>W <span class="token operator">-</span>f<span class="token operator">=</span><span class="token string">'$&#123;Installed-Size;10&#125;t$&#123;Package&#125;n'</span> <span class="token operator">|</span> sort <span class="token operator">-</span>k1<span class="token punctuation">,</span><span class="token number">1</span>n 以大小为依据显示已安装的deb包所使用的空间 <span class="token punctuation">(</span>ubuntu<span class="token punctuation">,</span> debian类系统<span class="token punctuation">)</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<br/>
+
+<h3 id="用户和群组"><a href="#用户和群组" class="headerlink" title="用户和群组"></a>用户和群组</h3><pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx">groupadd group_name 创建一个新用户组 
+groupdel group_name 删除一个用户组 
+groupmod <span class="token operator">-</span>n new_group_name old_group_name 重命名一个用户组 
+useradd <span class="token operator">-</span>c <span class="token string">"Name Surname "</span> <span class="token operator">-</span>g admin <span class="token operator">-</span>d <span class="token operator">/</span>home<span class="token operator">/</span>user1 <span class="token operator">-</span>s <span class="token operator">/</span>bin<span class="token operator">/</span>bash user1 创建一个属于 <span class="token string">"admin"</span> 用户组的用户 
+useradd user1 创建一个新用户 
+userdel <span class="token operator">-</span>r user1 删除一个用户 <span class="token punctuation">(</span> <span class="token string">'-r'</span> 排除主目录<span class="token punctuation">)</span> 
+usermod <span class="token operator">-</span>c <span class="token string">"User FTP"</span> <span class="token operator">-</span>g system <span class="token operator">-</span>d <span class="token operator">/</span>ftp<span class="token operator">/</span>user1 <span class="token operator">-</span>s <span class="token operator">/</span>bin<span class="token operator">/</span>nologin user1 修改用户属性 
+passwd 修改口令 
+passwd user1 修改一个用户的口令 <span class="token punctuation">(</span>只允许<span class="token keyword">root</span>执行<span class="token punctuation">)</span> 
+chage <span class="token operator">-</span>E <span class="token number">2005</span><span class="token operator">-</span><span class="token number">12</span><span class="token operator">-</span><span class="token number">31</span> user1 设置用户口令的失效期限 
+pwck 检查 <span class="token string">'/etc/passwd'</span> 的文件格式和语法修正以及存在的用户 
+grpck 检查 <span class="token string">'/etc/passwd'</span> 的文件格式和语法修正以及存在的群组 
+newgrp group_name 登陆进一个新的群组以改变新创建文件的预设群组 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<br/>
+
+<h3 id="打包和压缩文件"><a href="#打包和压缩文件" class="headerlink" title="打包和压缩文件"></a>打包和压缩文件</h3><pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx">bunzip2 file1<span class="token punctuation">.</span>bz2 解压一个叫做 <span class="token string">'file1.bz2'</span>的文件 
+bzip2 file1 压缩一个叫做 <span class="token string">'file1'</span> 的文件 
+gunzip file1<span class="token punctuation">.</span>gz 解压一个叫做 <span class="token string">'file1.gz'</span>的文件 
+<span class="token keyword">gzip</span> file1 压缩一个叫做 <span class="token string">'file1'</span>的文件 
+<span class="token keyword">gzip</span> <span class="token operator">-</span><span class="token number">9</span> file1 最大程度压缩 
+rar a file1<span class="token punctuation">.</span>rar test_file 创建一个叫做 <span class="token string">'file1.rar'</span> 的包 
+rar a file1<span class="token punctuation">.</span>rar file1 file2 dir1 同时压缩 <span class="token string">'file1'</span><span class="token punctuation">,</span> <span class="token string">'file2'</span> 以及目录 <span class="token string">'dir1'</span> 
+rar x file1<span class="token punctuation">.</span>rar 解压rar包 
+unrar x file1<span class="token punctuation">.</span>rar 解压rar包 
+tar <span class="token operator">-</span>cvf archive<span class="token punctuation">.</span>tar file1 创建一个非压缩的 tarball 
+tar <span class="token operator">-</span>cvf archive<span class="token punctuation">.</span>tar file1 file2 dir1 创建一个包含了 <span class="token string">'file1'</span><span class="token punctuation">,</span> <span class="token string">'file2'</span> 以及 <span class="token string">'dir1'</span>的档案文件 
+tar <span class="token operator">-</span>tf archive<span class="token punctuation">.</span>tar 显示一个包中的内容 
+tar <span class="token operator">-</span>xvf archive<span class="token punctuation">.</span>tar 释放一个包 
+tar <span class="token operator">-</span>xvf archive<span class="token punctuation">.</span>tar <span class="token operator">-</span>C <span class="token operator">/</span>tmp 将压缩包释放到 <span class="token operator">/</span>tmp目录下 
+tar <span class="token operator">-</span>cvfj archive<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>bz2 dir1 创建一个bzip2格式的压缩包 
+tar <span class="token operator">-</span>jxvf archive<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>bz2 解压一个bzip2格式的压缩包 
+tar <span class="token operator">-</span>cvfz archive<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz dir1 创建一个<span class="token keyword">gzip</span>格式的压缩包 
+tar <span class="token operator">-</span>zxvf archive<span class="token punctuation">.</span>tar<span class="token punctuation">.</span>gz 解压一个<span class="token keyword">gzip</span>格式的压缩包 
+zip file1<span class="token punctuation">.</span>zip file1 创建一个zip格式的压缩包 
+zip <span class="token operator">-</span>r file1<span class="token punctuation">.</span>zip file1 file2 dir1 将几个文件和目录同时压缩成一个zip格式的压缩包 
+unzip file1<span class="token punctuation">.</span>zip 解压一个zip格式压缩包 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<br/>
+
+<h3 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h3><pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx">cat file1 从第一个字节开始正向查看文件的内容 
+tac file1 从最后一行开始反向查看一个文件的内容 
+more file1 查看一个长文件的内容 
+less file1 类似于 <span class="token string">'more'</span> 命令，但是它允许在文件中和正向操作一样的反向操作 
+head <span class="token operator">-</span><span class="token number">2</span> file1 查看一个文件的前两行 
+tail <span class="token operator">-</span><span class="token number">2</span> file1 查看一个文件的最后两行 
+tail <span class="token operator">-</span>f <span class="token operator">/</span>var<span class="token operator">/</span>log<span class="token operator">/</span>messages 实时查看被添加到一个文件中的内容 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <p><a class="classtest-link" href="/tags/Linux/" rel="tag">Linux</a> — Aug 15, 2017</p>
+  
+
+
+          <div class="row mt-2">
+  
+    <div class="eight columns">
+      <p id="madewith">Made with ❤ and
+        <a class="footer-link icon" href="https://hexo.io" target="_blank" style="text-decoration: none;" rel="noreferrer" aria-label="Hexo.io">
+        <svg class="hexo svg-hov" width="14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Hexo.js</title><path d="M12 .007L1.57 6.056V18.05L12 23.995l10.43-6.049V5.952L12 .007zm4.798 17.105l-.939.521-.939-.521V12.94H9.08v4.172l-.94.521-.938-.521V6.89l.939-.521.939.521v4.172h5.84V6.89l.94-.521.938.521v10.222z"/></svg>
+        </a>
+        
+        at <a href="https://en.wikipedia.org" target="_blank" rel="noreferrer">Earth</a>.</p>
+        
+    </div>
+
+    <!-- Sepcial thanks to https://simpleicons.org/ for the icons -->
+    <div class="four columns mb-3 posisi" >
+      
+      <a class="ml-0 footer-link icon" href="https://github.com/Jensonhui" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="GitHub">
+        <svg class="github svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://linkedin.com" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="LinkedIn">
+        <svg class="linkedin svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://twitter.com/" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Twitter">
+        <svg class="twitter svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://instagram.com/" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="Instagram">
+        <svg class="instagram svg-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+      </a>
+      
+
+      
+      <a class="ml-0 footer-link icon" href="https://stackoverflow.com/" target="_blank" style="text-decoration: none" rel="noreferrer" aria-label="StackOverflow">
+        <svg class="stackoverflow svh-hov" width="18" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Stack Overflow</title><path d="M15.725 0l-1.72 1.277 6.39 8.588 1.716-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.369-1.644-8.225-6.85zm-3.15 4.465l-.905 1.94 9.702 4.517.904-1.94-9.701-4.517zm-1.85 4.86l-.44 2.093 10.473 2.201.44-2.092-10.473-2.203zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396H1.89zm4.265 2.133v2.13h10.66v-2.13H6.154Z"/></svg>
+      </a>
+      
+
+    </div>
+  
+</div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <script src="/js/nanobar.min.js"></script>
+  <script>
+    var options = {
+      classname: 'nanobar',
+      id: 'myNanobar'
+    };
+    var nanobar = new Nanobar(options);
+    nanobar.go(30);
+    nanobar.go(76);
+    nanobar.go(100);
+  </script>
+
+</body>
+
+</html>
