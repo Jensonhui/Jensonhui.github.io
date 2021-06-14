@@ -464,17 +464,16 @@ label>.label-body {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 ul {
   list-style: circle outside;
-  margin-left: 2rem;
 }
 
 ol {
   list-style: decimal outside;
-  margin-left: 2rem;
 }
 
 ol, ul {
   padding-left: 0;
   margin-top: 0;
+  margin-left: 0;
 }
 
 ul ul,
